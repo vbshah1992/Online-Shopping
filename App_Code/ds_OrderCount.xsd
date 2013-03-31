@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ds_OrderCount" targetNamespace="http://tempuri.org/ds_OrderCount.xsd" xmlns:mstns="http://tempuri.org/ds_OrderCount.xsd" xmlns="http://tempuri.org/ds_OrderCount.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="OnlineShoppingConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="OnlineShoppingConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.OnlineShoppingConnectionString.ConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OrderCountTableAdapter" GeneratorDataComponentClassName="OrderCountTableAdapter" Name="OrderCount" UserDataComponentName="OrderCountTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="OnlineShoppingConnectionString (Web.config)" DbObjectName="dbo.Customer" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     COUNT([Order].OrderId) AS "Total Order",Customer.FirstName, Customer.LastName
+FROM         [Order] INNER JOIN
+                      Customer ON [Order].CustomerId = Customer.CustomerId
+GROUP BY Customer.FirstName, Customer.LastName</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Total Order" DataSetColumn="Total Order" />
+              <Mapping SourceColumn="FirstName" DataSetColumn="FirstName" />
+              <Mapping SourceColumn="LastName" DataSetColumn="LastName" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ds_OrderCount" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="ds_OrderCount" msprop:Generator_DataSetName="ds_OrderCount">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OrderCount" msprop:Generator_UserTableName="OrderCount" msprop:Generator_RowDeletedName="OrderCountRowDeleted" msprop:Generator_RowChangedName="OrderCountRowChanged" msprop:Generator_RowClassName="OrderCountRow" msprop:Generator_RowChangingName="OrderCountRowChanging" msprop:Generator_RowEvArgName="OrderCountRowChangeEvent" msprop:Generator_RowEvHandlerName="OrderCountRowChangeEventHandler" msprop:Generator_TableClassName="OrderCountDataTable" msprop:Generator_TableVarName="tableOrderCount" msprop:Generator_RowDeletingName="OrderCountRowDeleting" msprop:Generator_TablePropName="OrderCount">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Total_x0020_Order" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Total Order" msprop:Generator_ColumnVarNameInTable="columnTotal_Order" msprop:Generator_ColumnPropNameInRow="Total_Order" msprop:Generator_ColumnPropNameInTable="Total_OrderColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="FirstName" msprop:Generator_UserColumnName="FirstName" msprop:Generator_ColumnVarNameInTable="columnFirstName" msprop:Generator_ColumnPropNameInRow="FirstName" msprop:Generator_ColumnPropNameInTable="FirstNameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LastName" msprop:Generator_UserColumnName="LastName" msprop:Generator_ColumnVarNameInTable="columnLastName" msprop:Generator_ColumnPropNameInRow="LastName" msprop:Generator_ColumnPropNameInTable="LastNameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

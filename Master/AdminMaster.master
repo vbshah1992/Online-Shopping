@@ -1,0 +1,115 @@
+<%@ Master Language="VB" CodeFile="AdminMaster.master.vb" Inherits="Master_AdminMaster" %>
+<%@ Register Src="../Controls/cltMenu.ascx" TagName="cltMenu" TagPrefix="uc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Online Shopping</title>
+
+    <script language="javascript" type="text/javascript">
+    function CheckDelete()
+    {
+    return(confirm('Are you sure, you wish to delete this record'));
+    }
+    </script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link href="../App_Themes/AdminTheme/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server" ID="scAdmin">
+        </asp:ScriptManager>
+        <div id="wrapper">
+            <div class="headerzone">
+                <div class="header">
+                    <div class="headerText">
+                        Online Shopping</div>
+                    <div class="phone">
+                        + 91 9988776655
+                        <div class="email">
+                            care@shopping.com
+                        </div>
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+                <div class="menuZone">
+                    <div class="menuleft">
+                        <div class="menuright">
+                            <div class="mainmenu">
+                                <uc1:cltMenu ID="CltMenu1" runat="server" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="banner">
+                <div class="features">
+                    <h2>
+                        Features</h2>
+                    <div class="featuresText">
+                        <ul>
+                            <li>120GB of storage</li>
+                            <li>Sterio sound effect</li>
+                            <li>Attractive look</li>
+                        </ul>
+                    </div>
+                    <div class="buybutton">
+                        <input type="image" src="../Images/buynow.jpg" />
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+                <div class="bannerText">
+                    <span class="blueText">Lorem ipsum dolor sit amet,</span> consectetuer adipiscing
+                    elit. Duis cursus tortor. Nunc consectetuer diam ac odio. Pellentesque vel mauris
+                    sit amet urna malesuada ornare. Curabitur venenatis est eget arcu. Donec vestibulum.
+                    Proin rutrum. Morbi commodo fringilla orci. Ut vel tortor. In ut velit. Vivamus
+                    hendrerit aliquam quam. Curabitur placerat eros vitae libero. Fusce sagittis commodo
+                    purus.
+                    <div class="clear">
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="workZone">
+                <div class="midBox">
+                    <div class="topBox">
+                        <div class="bottomBox">
+                            &nbsp;<div class="leftBox">
+                                <div class="box1">
+                                    <div class="clear">
+                                    </div>
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                            <div class="workZoneRight">
+                                <div class="rightBox" style="height: 100%">
+                                    <div class="clear">
+                                        <asp:ContentPlaceHolder ID="cphAdmin" runat="server">
+                                        </asp:ContentPlaceHolder>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="footer">
+                <ul style="color: #FFF;">
+                    Copyright (c) VaibhavShah.com. All rights reserved. Design by Stylish <a href="http://www.VaibhavShah.com"
+                        style="color: #FFF;">Vaibhav Shah</a>.
+                </ul>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

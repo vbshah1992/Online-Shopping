@@ -1,0 +1,265 @@
+<%@ Master Language="VB" CodeFile="CustomerMaster.master.vb" Inherits="Master_CustomerMaster" %>
+<%@ Register Src="../Controls/cltCompanyMenu.ascx" TagName="cltCompanyMenu" TagPrefix="uc3" %>
+<%@ Register Src="../Controls/cltCategoryMenu.ascx" TagName="cltCategoryMenu" TagPrefix="uc2" %>
+<%@ Register Src="../Controls/cltRegistration.ascx" TagName="Registration" TagPrefix="uc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Online Shopping</title>
+
+    <script language="javascript" type="text/javascript">
+    function CheckDelete()
+    {
+    return(confirm('Are you sure, you wish to delete this record'));
+    }
+    </script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link href="../App_Themes/CustomerTheme/style.css" rel="stylesheet" type="text/css" />
+    <%--<link href="../App_Themes/AdminTheme/style.css" rel="stylesheet" type="text/css" />
+    <link href="../App_Themes/AdminTheme/style.css" rel="stylesheet" type="text/css" />
+    <link href="../App_Themes/AdminTheme/style.css" rel="stylesheet" type="text/css" />
+    <link href="../App_Themes/AdminTheme/style.css" rel="stylesheet" type="text/css" />--%>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server" ID="scCustomer">
+        </asp:ScriptManager>
+        <asp:Panel ID="p1" runat="server" Style="display: none" CssClass="modalPopup">
+            <table width="100%">
+                <tr>
+                    <td align="right">
+                        <asp:ImageButton ID="btnCancel" runat="server" ImageUrl="~/Images/imgCancel.png" />
+                    </td>
+                </tr>
+            </table>
+            <asp:Panel ID="p3" runat="server" Style="cursor: move; background-color: Black; border: none;
+                color: White; font-size: larger">
+                <div>
+                    Login
+                </div>
+            </asp:Panel>
+            <div class="modalText">
+                <table align="center">
+                    <tr>
+                        <td align="center" colspan="2">
+                            <asp:Label ID="lblMessage" runat="server" ForeColor="Black"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Email Id</td>
+                        <td>
+                            <asp:TextBox ID="txtEmailId" runat="server"></asp:TextBox><asp:RequiredFieldValidator
+                                ID="rfvEmailId" runat="server" ControlToValidate="txtEmailId" ErrorMessage="Please enter email id."
+                                ValidationGroup="vgLogIn1">*</asp:RequiredFieldValidator><asp:RegularExpressionValidator
+                                    ID="revEmailId" runat="server" ControlToValidate="txtEmailId" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                    ErrorMessage="Please enter valid email id." ValidationGroup="vgLogIn1">*</asp:RegularExpressionValidator></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Password</td>
+                        <td>
+                            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Width="150px"></asp:TextBox><asp:RequiredFieldValidator
+                                ID="rfvPassword" runat="server" ControlToValidate="txtPassword" ErrorMessage="Please enter password."
+                                ValidationGroup="vgLogIn1">*</asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <asp:Button ID="btnLogIn" runat="server" Text="Login" ValidationGroup="vgLogIn1"
+                                OnClick="btnLogIn_Click" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <asp:ValidationSummary ID="vsLogIn" runat="server" ValidationGroup="vgLogIn1" ShowMessageBox="True"
+                                ShowSummary="False" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right">
+                            <asp:LinkButton ID="lnkForgotPassword" runat="server" CssClass="modelHeaderText">Forgot Password?</asp:LinkButton></td>
+                    </tr>
+                </table>
+            </div>
+        </asp:Panel>
+        <table id="tableRegistration" width="100%">
+            <tr>
+                <td align="right" runat="server" id="tdRegistration">
+                    <uc1:Registration ID="cltRegistration" runat="server" />
+                </td>
+            </tr>
+        </table>
+        <atk:ModalPopupExtender ID="mpeLogin" runat="server" TargetControlID="lnkLogIn" PopupControlID="p1"
+            BackgroundCssClass="modalBackground" DropShadow="true" PopupDragHandleControlID="p3" />
+        &nbsp; &nbsp;
+        <div id="wrapper">
+            <div class="headerzone">
+                <div class="header">
+                    <h1 style="color: White; text-decoration: underline; text-shadow: gray; font-family: Comic Sans MS">
+                        Online Shopping</h1>
+                    <div class="phone">
+                        +079-22553311&nbsp;
+                        <div class="email">
+                            shop@dsyn.com
+                        </div>
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+                <div class="menuZone">
+                    <div class="menuleft">
+                        <div class="menuright">
+                            <div class="mainmenu">
+                                <ul>
+                                    <li class="first">
+                                        <asp:LinkButton ID="lnkHome" runat="server" Width="34px" PostBackUrl="~/Customer/ProductList.aspx">Home</asp:LinkButton>
+                                    </li>
+                                    <li id="liMyProfile" runat="server">
+                                        <asp:LinkButton ID="lnkMyProfile" runat="server" Width="82px" PostBackUrl="~/Customer/MyProfile.aspx">My Profile</asp:LinkButton>
+                                    </li>
+                                    <li id="limyOrder" runat="server">
+                                        <asp:LinkButton ID="lnkMyOrder" runat="server" Width="82px" PostBackUrl="~/Customer/MyOrder.aspx">My Order</asp:LinkButton>
+                                    </li>
+                                    <li id="liMyFeedback" runat="server">
+                                        <asp:LinkButton ID="lnkMyFeedback" runat="server" Width="82px" PostBackUrl="~/Customer/MyFeedback.aspx">My Feedback</asp:LinkButton>
+                                    </li>
+                                    <li id="liChangePassword" runat="server">
+                                        <asp:LinkButton ID="lnkChangePassword" runat="server" Width="147px" PostBackUrl="~/Customer/ChangePassword.aspx">Change Password</asp:LinkButton>
+                                    </li>
+                                    <li id="liLogin" runat="server">
+                                        <asp:LinkButton ID="lnkLogIn" runat="server" Width="48px">Log In</asp:LinkButton>
+                                    </li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkAboutUs" runat="server" Width="75px">About Us</asp:LinkButton>
+                                    </li>
+                                    <li>
+                                        <asp:LinkButton ID="lnkContactUs" runat="server" Width="93px">Contact Us</asp:LinkButton>
+                                    </li>
+                                    <li id="liLogout" runat="server">
+                                        <asp:LinkButton ID="lnkLogOut" runat="server" Width="65px" PostBackUrl="~/Customer/LogOut.aspx">Log Out</asp:LinkButton>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="banner">
+                <div class="features">
+                    <h2>
+                        Features</h2>
+                    <div class="featuresText">
+                        <ul>
+                            <li>120GB of storage</li>
+                            <li>Sterio sound effect</li>
+                            <li>Attractive look</li>
+                        </ul>
+                    </div>
+                    <div class="buybutton">
+                        <input type="image" src="../Images/buynow.jpg" />
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+                <div class="bannerText">
+                    <span class="blueText">Lorem ipsum dolor sit amet,</span> consectetuer adipiscing
+                    elit. Duis cursus tortor. Nunc consectetuer diam ac odio. Pellentesque vel mauris
+                    sit amet urna malesuada ornare. Curabitur venenatis est eget arcu. Donec vestibulum.
+                    Proin rutrum. Morbi commodo fringilla orci. Ut vel tortor. In ut velit. Vivamus
+                    hendrerit aliquam quam. Curabitur placerat eros vitae libero. Fusce sagittis commodo
+                    purus.
+                    <div class="clear">
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="workZone">
+                <div class="midBox">
+                    <div class="topBox">
+                        <div class="bottomBox">
+                            <div class="leftBox">
+                                <div class="box1">
+                                    <div class="clear">
+                                    </div>
+                                </div>
+                                <div class="box2">
+                                    <table width="100%" align="center">
+                                        <tr>
+                                            <td runat="server" id="tdShoppingCart">
+                                                <div class="shopping_cart">
+                                                    <div class="cart_title">
+                                                        Shopping Cart</div>
+                                                    <div class="cart_icon">
+                                                        <a href="../Customer/ListShoppingCart.aspx" title="header=[Checkout] body=[&nbsp;] fade=[on]">
+                                                            <img id="imgShoppingCart" src="../Images/shoppingcart.png" alt="Shopping Cart" title="Shopping Cart"
+                                                                width="60" height="50" border="0" />
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                    <div class="title_box">
+                                                        Categories</div>
+                                                    <div class="left_menu">
+                                                        <uc2:cltCategoryMenu ID="CltCategoryMenu1" runat="server"></uc2:cltCategoryMenu>
+                                                    </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 236px">
+                                                <div class="title_box">
+                                                    Manufacturers</div>
+                                                <div class="left_menu">
+                                                    <uc3:cltCompanyMenu ID="CltCompanyMenu1" runat="server" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="title_box">
+                                                    Sponsers</div>
+                                                <div class="left_menu">
+                                                    <asp:AdRotator ID="AdRotator1" runat="server" DataSourceID="XmlDataSource" Height="150px"
+                                                        Width="194px" />
+                                                    <asp:XmlDataSource ID="XmlDataSource" runat="server" DataFile="~/AdXML.xml"></asp:XmlDataSource>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </div>
+                        <div class="workZoneRight">
+                            <div class="rightBox" style="height: 100%">
+                                <div class="clear">
+                                    <asp:ContentPlaceHolder ID="cphCustomer" runat="server">
+                                    </asp:ContentPlaceHolder>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="footer">
+            <ul style="color: #FFF;">
+                Copyright (c) VaibhavShah.com. All rights reserved. Design by Stylish <a href="http://www.VaibhavShah.com"
+                    style="color: #FFF;">Vaibhav Shah</a>.
+            </ul>
+        </div>
+    </form>
+</body>
+</html>

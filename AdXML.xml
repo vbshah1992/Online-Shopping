@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+	<Ad>
+		<ImageUrl>~/Banners/10.png</ImageUrl>
+		<NavigateUrl>~/Customer/ProductList.aspx</NavigateUrl>
+		<AlternateText>W3Schools Main Site</AlternateText>
+		<Impressions>1</Impressions>
+		<Keyword>elearning</Keyword>
+	</Ad>
+	<Ad>
+		<ImageUrl>~/Banners/18.png</ImageUrl>
+		<NavigateUrl>~/Customer/ProductList.aspx</NavigateUrl>
+		<AlternateText>XHTML Tutorial</AlternateText>
+		<Impressions>1</Impressions>
+		<Keyword>XHTML</Keyword>
+	</Ad>
+	<Ad>
+		<ImageUrl>~/Banners/19.png</ImageUrl>
+		<NavigateUrl>~/Customer/ProductList.aspx</NavigateUrl>
+		<AlternateText>XHTML Tutorial</AlternateText>
+		<Impressions>1</Impressions>
+		<Keyword>XHTML</Keyword>
+	</Ad>
+	<Ad>
+		<ImageUrl>~/Banners/20.png</ImageUrl>
+		<NavigateUrl>~/Customer/ProductList.aspx</NavigateUrl>
+		<AlternateText>XHTML Tutorial</AlternateText>
+		<Impressions>1</Impressions>
+		<Keyword>XHTML</Keyword>
+	</Ad>
+</Advertisements>
+
