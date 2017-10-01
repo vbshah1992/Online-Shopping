@@ -3,23 +3,18 @@ Author: Vaibhav Shah
 Title: Online Shopping
 */
 
-
-Website create in:
+Website created in:
 
 This project is created in Visual Studio 2005.
 Database is creatd in MSSQL 2005.
 This project also contains ajax toolkit.
 
-
-
 Software Requirement:
 
-We need to start or run project 3 softwares:
+We need 3 main softwares to debug thisproject:
 1. Microsoft Visual studio 2005
 2. MSSQL 2005
 3. Ajax toolkit setup
-
-
 
 Description:
 
